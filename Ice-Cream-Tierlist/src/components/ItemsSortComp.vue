@@ -36,19 +36,33 @@ export default {
     }
   },
   methods:{
+
     getAsset(img){
+
       return require("./../assets/img/" + img);
     },
-    dragstart_handler(ev) {
+
+    dragstart_handler(ev)
+    {
       ev.dataTransfer.setData("text/plain", ev.target.outerHTML);
       window.getSelection().removeAllRanges();
     },
-    dragendHandler(ev){
+
+    dragendHandler(ev)
+    {
       if(ev.dataTransfer.dropEffect == "move"){
-          console.log(ev);
           ev.target.remove()
+          this.submitData();
+      }
+    },
+
+    submitData()
+    { 
+      for(let i=0; i < 6; i++){
+      console.log(document.getElementById("tier-table").rows[i].cells[1]);
       }
     }
+
   }
 }
 
